@@ -13,14 +13,14 @@ const Home = ({ navigation }) => {
   source={{
     uri:
     // add url
-      "",
+      "https://labelllevie.files.wordpress.com/2014/07/travel.jpg?w=1090&h=726",
   }}>
   <OverLayContainer>
     <TopStyling
     style={{ height: "40%", alignItems: "center", justifyContent: "center" }}
   > 
   <Title style={{ color: "#fff", fontSize: "38px", textAlign: "center" }}>
-      Sinful
+      Trips around the world
     </Title></TopStyling>
     <BottomStyling>
     {/* add where to go */}
