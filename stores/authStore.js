@@ -11,24 +11,24 @@ class AuthStore {
     makeAutoObservable(this);
   }
 
-  signup = async (newUser) => {
+  register = async (newUser) => {
     try {
-      const res = await instance.post("/signup", newUser);
+      const res = await instance.post("/register", newUser);
       this.setUser(res.data.token);
     } catch (error) {
       console.error(error);
     }
   };
 
-  signin = async (userData) => {
+  login = async (userData) => {
     try {
-      const res = await instance.post("/signin", userData);
+      const res = await instance.post("/login", userData);
       this.setUser(res.data.token);
     } catch (error) {
       console.error(error);
     }
   };
-  signout = async () => {
+  logout = async () => {
     delete instance.defaults.headers.common.Authorization;
     await AsyncStorage.removeItem("myToken");
     this.user = null;
@@ -47,7 +47,7 @@ class AuthStore {
       if (user.exp >= currentTime) {
         this.setUser(token);
       } else {
-        this.signout();
+        this.logout();
       }
     }
   };
