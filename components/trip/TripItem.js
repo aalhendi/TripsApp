@@ -8,7 +8,7 @@ import { ShopItemStyled } from "./styles";
 
 const TripItem = ({ trip, navigation }) => {
   return (
-    <View>
+    <View style={{ margin: "1%" }}>
       <TouchableOpacity
         onPress={() => navigation.navigate("TripDetail", { trip: trip })}
       >

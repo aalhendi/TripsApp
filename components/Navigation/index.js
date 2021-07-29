@@ -9,13 +9,13 @@ import Register from "../authentication/Register";
 import TripDetail from "../trip/TripDetail";
 
 const Stack = createStackNavigator();
-export default RootNavigator = () => {
+export default RootNavigator = ({ theme }) => {
   return (
     <Stack.Navigator
       initialRouteName="Home"
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#90d4ed",
+          backgroundColor: theme.green,
         },
         headerTintColor: "white",
         headerTitleStyle: {
