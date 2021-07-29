@@ -15,7 +15,6 @@ const TripList = ({ navigation }) => {
   const tripList = tripStore.trips?.map((trip) => (
     <TripItem trip={trip} key={trip.id} navigation={navigation} />
   ));
-  console.log(tripList);
   return (
     <View style={{ flex: 1, alignItems: "center" }}>
       <Heading style={{ margin: "1%" }}>Trip List</Heading>
