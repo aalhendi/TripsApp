@@ -19,6 +19,7 @@ const Register = ({ navigation }) => {
 
   const handleSubmit = async () => {
     await authStore.register(userInfo);
+    // TODO: FIX NAVIGATION REPLACE
     if (authStore.user) {
       navigation.replace("Home");
     }
