@@ -41,7 +41,7 @@ const Login = ({ navigation }) => {
       <AuthButton onPress={handleSubmit}>
         <AuthButtonText>Log in</AuthButtonText>
       </AuthButton>
-      
+
       <AuthOther onPress={() => navigation.navigate("Register")}>
         Click here to Register
       </AuthOther>

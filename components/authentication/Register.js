@@ -1,12 +1,13 @@
 /* Imports */
 import React from "react";
+/* Styles */
 import {
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  ScrollView,
-} from "react-native";
-import { View, Text, Button } from "native-base";
-import { TextInput } from "react-native-paper";
+  AuthTitle,
+  AuthContainer,
+  AuthTextInput,
+  AuthButtonText,
+  AuthButton,
+} from "./styles";
 /* State and Store */
 import authStore from "../../stores/authStore";
 import { observer } from "mobx-react-lite";
@@ -27,33 +28,25 @@ const Register = ({ navigation }) => {
 
   return (
     <>
-      <ScrollView>
-        <KeyboardAvoidingView
-          behavior={Platform.OS === "ios" ? "padding" : null}
-          keyboardVerticalOffset={Platform.OS === "ios" ? 64 : 0}
-        >
-          <View style={{ margin: "1%" }}>
-            <TextInput
-              label="username"
-              autoCapitalize="none"
-              onChangeText={(username) =>
-                setUserInfo({ ...userInfo, username })
-              }
-            />
-            <TextInput
-              label="password"
-              autoCapitalize="none"
-              secureTextEntry={true}
-              onChangeText={(password) =>
-                setUserInfo({ ...userInfo, password })
-              }
-            />
-          </View>
-          <TouchableOpacity>
-            <Button onPress={handleSubmit}>Register</Button>
-          </TouchableOpacity>
-        </KeyboardAvoidingView>
-      </ScrollView>
+      <AuthContainer>
+        <AuthTitle> Register</AuthTitle>
+        <AuthTextInput
+          label="username"
+          autoCapitalize="none"
+          placeholder="username"
+          onChangeText={(username) => setUserInfo({ ...userInfo, username })}
+        />
+        <AuthTextInput
+          label="password"
+          autoCapitalize="none"
+          secureTextEntry={true}
+          placeholder="password"
+          onChangeText={(password) => setUserInfo({ ...userInfo, password })}
+        />
+        <AuthButton onPress={handleSubmit}>
+          <AuthButtonText>Register</AuthButtonText>
+        </AuthButton>
+      </AuthContainer>
     </>
   );
 };

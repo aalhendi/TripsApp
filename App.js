@@ -1,6 +1,5 @@
 import React from "react";
 
-
 import { NativeBaseProvider } from "native-base";
 
 //styles
@@ -10,12 +9,12 @@ import { ThemeProvider } from "styled-components";
 import { NavigationContainer } from "@react-navigation/native";
 import RootNavigator from "./components/Navigation/index";
 
-
 const theme = {
   mainColor: "#000000",
-  backgroundColor: "#FFFFFF",
+  backgroundColor: "#ffffff",
   pink: "#f283a2",
   red: "red",
+  green: "#00af87",
 };
 export default function App() {
   return (
@@ -28,4 +27,3 @@ export default function App() {
     </NativeBaseProvider>
   );
 }
-
