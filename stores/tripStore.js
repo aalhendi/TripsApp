@@ -10,7 +10,7 @@ class TripStore {
     makeAutoObservable(this);
   }
 
-  fetchtrip = async () => {
+  fetchtrips = async () => {
     try {
       let response = await instance.get("/trips");
       this.trips = response.data;
@@ -22,6 +22,6 @@ class TripStore {
 }
 
 const tripStore = new TripStore();
-tripStore.fetchtrip();
+tripStore.fetchtrips();
 
 export default tripStore;
