@@ -40,12 +40,11 @@ const Home = ({ navigation }) => {
         </TopStyling>
         <BottomStyling>
           {/* add where to go */}
-          <ButtonStyled onPress={() => navigation.navigate("")}>
-            Click here
-          </ButtonStyled>
+          
           <ButtonStyled onPress={() => navigation.navigate("Register")}>
             Register
           </ButtonStyled>
+
           <ButtonStyled
             onPress={
               authStore.user ? authStore.logout : () => alert("Not logged in!")
@@ -53,6 +52,11 @@ const Home = ({ navigation }) => {
           >
             Logout
           </ButtonStyled>
+
+          <ButtonStyled onPress={() => navigation.navigate("Login")}>
+            Log in
+          </ButtonStyled>
+
         </BottomStyling>
       </OverLayContainer>
     </HomeBackground>
