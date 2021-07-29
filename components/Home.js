@@ -40,6 +40,10 @@ const Home = ({ navigation }) => {
         </TopStyling>
         <BottomStyling>
           {/* add where to go */}
+
+          <ButtonStyled onPress={() => navigation.navigate("TripList")}>
+            Click here
+          </ButtonStyled>
           
           <ButtonStyled onPress={() => navigation.navigate("Register")}>
             Register
