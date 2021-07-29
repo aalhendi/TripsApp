@@ -22,7 +22,7 @@ const Login = ({ navigation }) => {
   });
   const handleSubmit = async () => {
     await authStore.login(user);
-    if (authStore.user) navigation.replace("BakeryList");
+    if (authStore.user) navigation.replace("TripList");
   };
   return (
     <AuthContainer>
@@ -41,7 +41,7 @@ const Login = ({ navigation }) => {
       <AuthButton onPress={handleSubmit}>
         <AuthButtonText>Log in</AuthButtonText>
       </AuthButton>
-      
+
       <AuthOther onPress={() => navigation.navigate("Register")}>
         Click here to Register
       </AuthOther>

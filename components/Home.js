@@ -1,4 +1,8 @@
+/* Imports */
 import React from "react";
+/* State and Store */
+import authStore from "../stores/authStore";
+import { observer } from "mobx-react-lite";
 
 // Styling
 
@@ -36,13 +40,31 @@ const Home = ({ navigation }) => {
         </TopStyling>
         <BottomStyling>
           {/* add where to go */}
+
           <ButtonStyled onPress={() => navigation.navigate("TripList")}>
             Click here
           </ButtonStyled>
+          
+          <ButtonStyled onPress={() => navigation.navigate("Register")}>
+            Register
+          </ButtonStyled>
+
+          <ButtonStyled
+            onPress={
+              authStore.user ? authStore.logout : () => alert("Not logged in!")
+            }
+          >
+            Logout
+          </ButtonStyled>
+
+          <ButtonStyled onPress={() => navigation.navigate("Login")}>
+            Log in
+          </ButtonStyled>
+
         </BottomStyling>
       </OverLayContainer>
     </HomeBackground>
   );
 };
 
-export default Home;
+export default observer(Home);

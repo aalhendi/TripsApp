@@ -1,7 +1,5 @@
 import axios from "axios";
-
-const instance = axios.create({
-  baseURL: "http://192.168.8.102:8000",
-});
+// CHECKME: Revert to localhost
+const instance = axios.create({ baseURL: "http://10.0.2.2:8000" });
 
 export default instance;
