@@ -22,7 +22,7 @@ const Login = ({ navigation }) => {
   });
   const handleSubmit = async () => {
     await authStore.login(user);
-    if (authStore.user) navigation.replace("BakeryList");
+    if (authStore.user) navigation.replace("TripList");
   };
   return (
     <AuthContainer>
