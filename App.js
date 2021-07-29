@@ -21,7 +21,7 @@ export default function App() {
     <NativeBaseProvider>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
-          <RootNavigator />
+          <RootNavigator theme={theme} />
         </NavigationContainer>
       </ThemeProvider>
     </NativeBaseProvider>
