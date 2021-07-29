@@ -6,6 +6,7 @@ import Home from "../Home";
 import TripList from "../trip/TripList";
 import Login from "../authentication/Login";
 import Register from "../authentication/Register";
+import TripDetail from "../trip/TripDetail";
 
 const Stack = createStackNavigator();
 export default RootNavigator = () => {
@@ -33,8 +34,19 @@ export default RootNavigator = () => {
       <Stack.Screen
         name="TripList"
         component={TripList}
-         options={{
+        options={{
           headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="TripDetail"
+        component={TripDetail}
+        options={({ route }) => {
+          const { trip } = route.params;
+          return {
+            title: trip.title,
+          };
         }}
       />
 

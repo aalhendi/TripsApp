@@ -12,7 +12,7 @@ class TripStore {
 
   fetchtrips = async () => {
     try {
-      let response = await instance.get("/trips");
+      const response = await instance.get("/trips");
       this.trips = response.data;
       this.loading = false;
     } catch (error) {
