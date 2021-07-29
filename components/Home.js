@@ -19,7 +19,7 @@ const Home = ({ navigation }) => {
     <TopStyling
     style={{ height: "40%", alignItems: "center", justifyContent: "center" }}
   > 
-  <Title style={{ color: "#fff", fontSize: "38px", textAlign: "center" }}>
+  <Title>
       Trips around the world
     </Title></TopStyling>
     <BottomStyling>
