@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 export default RootNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="TripList"
+      initialRouteName="Home"
       screenOptions={{
         headerStyle: {
           backgroundColor: "#90d4ed",

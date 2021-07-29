@@ -1,16 +1,20 @@
 import React from "react";
 //components
-import { Text, Veiw } from "react-native";
+import { Text, View } from "react-native";
 import { Image } from "react-native";
 import { List } from "native-base";
+import { ShopItemStyled } from "./styles";
 //stores
 // import tripStore from "../../stores/tripStore";
 
-const TripItem = ({ trips, navigation }) => {
+const TripItem = ({ trip, navigation }) => {
+  console.log(trip.image);
   return (
-    <List.Item>
-      <Image source={{ uri: trips.image }} />
-    </List.Item>
+    <View>
+      <Image source={{ uri: trip.image }} style={{ height: 100, width: 100 }} />
+      <ShopItemStyled>{trip.title}</ShopItemStyled>
+      <ShopItemStyled>{trip.description}</ShopItemStyled>
+    </View>
   );
 };
 

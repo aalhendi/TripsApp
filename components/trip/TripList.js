@@ -6,20 +6,17 @@ import { Text, View } from "react-native";
 import TripItem from "./TripItem";
 //stores
 import tripStore from "../../stores/tripStore";
-import { Heading } from "native-base";
+import { Heading, List, Spinner } from "native-base";
+import { Title } from "./styles";
 
 const TripList = ({ navigation }) => {
-  const tripList = tripStore.trips.map((trips) => {
-    <TripItem trips={trips} key={trips.id} navigation={navigation} />;
-  });
-  return (
-    <>
-      <View style={{ flex: 1, alignSelf: "center" }}>
-        <Heading>Trip List</Heading>
-      </View>
-      <View>{tripList}</View>
-    </>
-  );
+  if (tripStore.loading) return <Spinner />;
+
+  const tripList = tripStore.trips?.map((trip) => (
+    <TripItem trip={trip} key={trip.id} navigation={navigation} />
+  ));
+  console.log(tripList);
+  return <List>{tripList}</List>;
 };
 
 export default observer(TripList);
