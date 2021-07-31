@@ -1,5 +1,5 @@
+/* Imports*/
 import { makeAutoObservable } from "mobx";
-
 import instance from "./instance";
 
 class TripStore {
@@ -15,6 +15,15 @@ class TripStore {
       const response = await instance.get("/trips");
       this.trips = response.data;
       this.loading = false;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  deleteTrip = async (tripId) => {
+    try {
+      await instance.delete(`/trips/${tripId}`);
+      this.trips = this.trips.filter((trip) => trip.id !== tripId);
     } catch (error) {
       console.error(error);
     }

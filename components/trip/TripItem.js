@@ -1,10 +1,13 @@
+/* Imports */
 import React from "react";
-//components
+import { FontAwesome5 } from "@expo/vector-icons";
+/* Components */
 import { Text, TouchableOpacity, View } from "react-native";
 import { Image } from "react-native";
 import { ShopItemStyled } from "./styles";
-//stores
-// import tripStore from "../../stores/tripStore";
+/* State and Store */
+import tripStore from "../../stores/tripStore";
+import authStore from "../../stores/authStore";
 
 const TripItem = ({ trip, navigation }) => {
   return (
@@ -18,6 +21,18 @@ const TripItem = ({ trip, navigation }) => {
         />
         <ShopItemStyled>{trip.title}</ShopItemStyled>
         <ShopItemStyled>{trip.description}</ShopItemStyled>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        {authStore.user ? (
+          <FontAwesome5
+            name="trash"
+            size={24}
+            color="black"
+            onPress={() => tripStore.deleteTrip(trip.id)}
+          />
+        ) : (
+          <></>
+        )}
       </TouchableOpacity>
     </View>
   );
