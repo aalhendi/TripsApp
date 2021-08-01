@@ -1,6 +1,8 @@
 /* Imports */
 import React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { MaterialIcons } from '@expo/vector-icons'; 
+
 /* Components */
 import { Text, TouchableOpacity, View } from "react-native";
 import { Image } from "react-native";
@@ -31,6 +33,15 @@ const TripItem = ({ trip, navigation }) => {
             onPress={() => tripStore.deleteTrip(trip.id)}
           />
         ) : (
+          <></>
+        )}
+        {authStore.user ? (
+        <MaterialIcons name="update" 
+        size={24} 
+        color="black" 
+        onPress={() => tripStore.updateTrip(trip.id)}
+        />
+         ) : (
           <></>
         )}
       </TouchableOpacity>

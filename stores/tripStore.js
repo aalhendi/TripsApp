@@ -28,6 +28,16 @@ class TripStore {
       console.error(error);
     }
   };
+
+  updateTrip = async (tripId) => {
+    try {
+      await instance.put(`/trips/${tripId}`);
+      this.trips = this.trips.find((trip) => trip.id === +tripId);
+    } catch (error) {
+      console.error(error);
+    }
+
+  }
 }
 
 const tripStore = new TripStore();
