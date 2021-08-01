@@ -23,7 +23,7 @@ const TripItem = ({ trip, navigation }) => {
         <ShopItemStyled>{trip.description}</ShopItemStyled>
       </TouchableOpacity>
       <TouchableOpacity>
-        {authStore.user ? (
+        {authStore.user?.id === trip.userId ? (
           <FontAwesome5
             name="trash"
             size={24}
