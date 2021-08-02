@@ -1,12 +1,15 @@
+/* Imports */
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-//components
+/* Components */
 import Home from "../Home";
 import TripList from "../trip/TripList";
 import Login from "../authentication/Login";
 import Register from "../authentication/Register";
 import TripDetail from "../trip/TripDetail";
+import Profile from "../profile/Profile";
+import ProfileEdit from "../profile/ProfileEdit";
 
 const Stack = createStackNavigator();
 export default RootNavigator = ({ theme }) => {
@@ -61,6 +64,22 @@ export default RootNavigator = ({ theme }) => {
       <Stack.Screen
         name="Register"
         component={Register}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="ProfileEdit"
+        component={ProfileEdit}
         options={{
           headerShown: false,
         }}

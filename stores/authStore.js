@@ -1,11 +1,12 @@
+/* Imports */
 import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 import decode from "jwt-decode";
-
-//async storage
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import profileStore from "./profileStore";
 
 class AuthStore {
+  loading = true;
   user = null;
   constructor() {
     makeAutoObservable(this);
@@ -24,6 +25,7 @@ class AuthStore {
     try {
       const res = await instance.post("/login", userData);
       this.setUser(res.data.token);
+      await profileStore.setProfile(this.user.id);
     } catch (error) {
       console.error(error);
     }
@@ -37,6 +39,8 @@ class AuthStore {
     await AsyncStorage.setItem("myToken", token);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     this.user = decode(token);
+    await profileStore.setProfile(this.user.id);
+    this.loading = false;
   };
 
   checkForToken = async () => {
