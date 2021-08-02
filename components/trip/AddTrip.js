@@ -13,7 +13,8 @@ import {
   AddImageButton,
 } from "./styles";
 //
-import { Button, Image, View, Platform } from "react-native";
+import { View, Platform } from "react-native";
+import { Image } from "native-base";
 import * as ImagePicker from "expo-image-picker";
 
 const AddTrip = ({ navigation }) => {
@@ -43,7 +44,6 @@ const AddTrip = ({ navigation }) => {
       quality: 1,
     });
 
-
     if (!result.cancelled) {
       let filename = result.uri.split("/").pop();
       let match = /\.(\w+)$/.exec(filename);
@@ -60,7 +60,6 @@ const AddTrip = ({ navigation }) => {
         },
       });
     }
-    }
   };
 
   const handleSubmit = async () => {
@@ -71,7 +70,7 @@ const AddTrip = ({ navigation }) => {
   return (
     <>
       <Container>
-        <AddTripTitle> Add </AddTripTitle>
+        <AddTripTitle> Add Trip </AddTripTitle>
         <AddTextInput
           label="title"
           autoCapitalize="none"
@@ -88,17 +87,10 @@ const AddTrip = ({ navigation }) => {
         />
 
         <AddButton onPress={pickImage}>
-          <AddTripButtonText>Add</AddTripButtonText>
+          <AddTripButtonText>Add Image</AddTripButtonText>
         </AddButton>
-        {newTrip.image && (
-          <Image
-            source={{ uri: newTrip.image }}
-            style={{ width: 200, height: 200 }}
-          />
-        )}
-
         <AddButton onPress={handleSubmit}>
-          <AddTripButtonText>Add</AddTripButtonText>
+          <AddTripButtonText>Submit</AddTripButtonText>
         </AddButton>
       </Container>
     </>

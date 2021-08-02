@@ -70,9 +70,9 @@ export default RootNavigator = ({ theme }) => {
         }}
       />
 
+      <Stack.Screen name="AddTrip" component={AddTrip} />
+
       <Stack.Screen
-        name="AddTrip"
-        component={AddTrip}
         name="Profile"
         component={Profile}
         options={{
