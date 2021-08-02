@@ -20,6 +20,7 @@ const Register = ({ navigation }) => {
 
   const handleSubmit = async () => {
     await authStore.register(userInfo);
+    // please fix the replace and what if the username already exist?
     // TODO: FIX NAVIGATION REPLACE
     if (authStore.user) {
       navigation.replace("Home");

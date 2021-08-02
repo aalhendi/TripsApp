@@ -49,6 +49,7 @@ const Home = ({ navigation }) => {
             Register
           </ButtonStyled>
 
+          {/* if the user is not logged in why would he see the logout button? */}
           <ButtonStyled
             onPress={
               authStore.user ? authStore.logout : () => alert("Not logged in!")
