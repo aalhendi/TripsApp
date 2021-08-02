@@ -22,14 +22,9 @@ const TripItem = ({ trip, navigation }) => {
         <ShopItemStyled>{trip.title}</ShopItemStyled>
         <ShopItemStyled>{trip.description}</ShopItemStyled>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => tripStore.deleteTrip(trip.id)}>
         {authStore.user?.id === trip.userId ? (
-          <FontAwesome5
-            name="trash"
-            size={24}
-            color="black"
-            onPress={() => tripStore.deleteTrip(trip.id)}
-          />
+          <FontAwesome5 name="trash" size={24} color="red" />
         ) : (
           <></>
         )}

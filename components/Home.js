@@ -44,7 +44,7 @@ const Home = ({ navigation }) => {
           <ButtonStyled onPress={() => navigation.navigate("TripList")}>
             Click here
           </ButtonStyled>
-          
+
           <ButtonStyled onPress={() => navigation.navigate("Register")}>
             Register
           </ButtonStyled>
@@ -61,6 +61,9 @@ const Home = ({ navigation }) => {
             Log in
           </ButtonStyled>
 
+          <ButtonStyled onPress={() => navigation.navigate("Profile")}>
+            Profile
+          </ButtonStyled>
         </BottomStyling>
       </OverLayContainer>
     </HomeBackground>
