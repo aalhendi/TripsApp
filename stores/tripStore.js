@@ -1,8 +1,10 @@
 /* Imports*/
 import { makeAutoObservable } from "mobx";
 import instance from "./instance";
+import {useState} from "react";
 
 class TripStore {
+  
   trips = [];
   loading = true;
 
@@ -29,16 +31,20 @@ class TripStore {
     }
   };
 
-  updateTrip = async (tripId) => {
+  updateTrip = async (updatedTrip) => {
     try {
-      await instance.put(`/trips/${tripId}`);
-      this.trips = this.trips.find((trip) => trip.id === +tripId);
+       await instance.put(`/trips/${updatedTrip.tripId}`);
+      const tripUpdate = this.trips.find((trip) => trip.id === updatedTrip.tripId);
+      // for{
+
+      // }
+
     } catch (error) {
+      console.log("\n\n\nCATCH ERROR\n\n\n")
       console.error(error);
     }
-
-  }
-}
+  };
+};
 
 const tripStore = new TripStore();
 tripStore.fetchtrips();

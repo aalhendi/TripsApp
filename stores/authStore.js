@@ -12,7 +12,9 @@ class AuthStore {
   }
 
   register = async (newUser) => {
+    
     try {
+      console.log(newUser);
       const res = await instance.post("/register", newUser);
       this.setUser(res.data.token);
     } catch (error) {
@@ -21,7 +23,9 @@ class AuthStore {
   };
 
   login = async (userData) => {
+    
     try {
+      console.log(userData);
       const res = await instance.post("/login", userData);
       this.setUser(res.data.token);
     } catch (error) {

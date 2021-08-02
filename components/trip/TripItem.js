@@ -1,8 +1,8 @@
+
 /* Imports */
 import React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { MaterialIcons } from '@expo/vector-icons'; 
-
+import { MaterialIcons } from '@expo/vector-icons';
 /* Components */
 import { Text, TouchableOpacity, View } from "react-native";
 import { Image } from "react-native";
@@ -11,7 +11,10 @@ import { ShopItemStyled } from "./styles";
 import tripStore from "../../stores/tripStore";
 import authStore from "../../stores/authStore";
 
-const TripItem = ({ trip, navigation }) => {
+//modals and do nav
+
+const TripItem = ({navigation, trip }) => {
+
   return (
     <View style={{ margin: "1%" }}>
       <TouchableOpacity
@@ -25,7 +28,7 @@ const TripItem = ({ trip, navigation }) => {
         <ShopItemStyled>{trip.description}</ShopItemStyled>
       </TouchableOpacity>
       <TouchableOpacity>
-        {authStore.user ? (
+        {authStore.user?.id === trip.userId ? (
           <FontAwesome5
             name="trash"
             size={24}
@@ -35,11 +38,12 @@ const TripItem = ({ trip, navigation }) => {
         ) : (
           <></>
         )}
-        {authStore.user ? (
-        <MaterialIcons name="update" 
+        {/* make button nav to new screen */}
+        {authStore.user ?.id === trip.userId ? (
+        <MaterialIcons onPress={() => navigation.navigate("TripDetail", { trip: trip })}
+        name="update" 
         size={24} 
         color="black" 
-        onPress={() => tripStore.updateTrip(trip.id)}
         />
          ) : (
           <></>

@@ -10,10 +10,24 @@ import { observer } from "mobx-react";
 import { DetailTitle, DetailImage, DetailWrapper } from "./styles";
 
 //native-base
-import { Spinner } from "native-base";
+import { Spinner , Button} from "native-base";
 import { Text } from "react-native-paper";
 
-const TripDetail = ({ navigation, route }) => {
+//state
+import { useState } from "react";
+
+const TripDetail = ({ route }) => {
+  const [state, setState] = useState({
+    title:"",
+    description:"",
+    image:"",
+});
+
+  const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.value });
+  
+  };
+ 
   const { trip } = route.params;
   if (tripStore.loading) {
     return <Spinner />;
@@ -23,8 +37,13 @@ const TripDetail = ({ navigation, route }) => {
     <>
       <DetailWrapper>
         <DetailImage source={{ uri: trip.image }} />
-        <DetailTitle>{trip.title}</DetailTitle>
+        <DetailTitle 
+        onChange={setState}
+        >{trip.title}</DetailTitle>
         <Text>{trip.description}</Text>
+        <Button onPress={handleChange}>
+        <Text>Update</Text>
+        </Button>
       </DetailWrapper>
     </>
   );
