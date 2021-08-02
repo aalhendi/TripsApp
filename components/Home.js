@@ -44,11 +44,12 @@ const Home = ({ navigation }) => {
           <ButtonStyled onPress={() => navigation.navigate("TripList")}>
             Click here
           </ButtonStyled>
-          
+
           <ButtonStyled onPress={() => navigation.navigate("Register")}>
             Register
           </ButtonStyled>
 
+          {/* if the user is not logged in why would he see the logout button? */}
           <ButtonStyled
             onPress={
               authStore.user ? authStore.logout : () => alert("Not logged in!")
@@ -60,7 +61,6 @@ const Home = ({ navigation }) => {
           <ButtonStyled onPress={() => navigation.navigate("Login")}>
             Log in
           </ButtonStyled>
-
         </BottomStyling>
       </OverLayContainer>
     </HomeBackground>

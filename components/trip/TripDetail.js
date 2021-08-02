@@ -13,6 +13,7 @@ import { DetailTitle, DetailImage, DetailWrapper } from "./styles";
 import { Spinner } from "native-base";
 import { Text } from "react-native-paper";
 
+// please if you are not using navigation remove it
 const TripDetail = ({ navigation, route }) => {
   const { trip } = route.params;
   if (tripStore.loading) {

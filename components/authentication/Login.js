@@ -22,6 +22,7 @@ const Login = ({ navigation }) => {
   });
   const handleSubmit = async () => {
     await authStore.login(user);
+    // what if the login failed? and there is no user in authStore.user?
     if (authStore.user) navigation.replace("TripList");
   };
   return (

@@ -7,7 +7,7 @@ import { Heading, List, Spinner } from "native-base";
 import TripItem from "./TripItem";
 //stores
 import tripStore from "../../stores/tripStore";
-import { Title } from "./styles";
+import { Title } from "./styles"; //please remove it if you are not using it
 
 const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
