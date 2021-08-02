@@ -11,7 +11,7 @@ import authStore from "../../stores/authStore";
 
 const TripItem = ({ trip, navigation }) => {
   return (
-    //👇🏻why do you have styles.js if you are using the inline styling?
+    // TODO: MOVE ALL STYLES TO styles.js
     <View style={{ margin: "1%" }}>
       <TouchableOpacity
         onPress={() => navigation.navigate("TripDetail", { trip: trip })}
@@ -20,27 +20,17 @@ const TripItem = ({ trip, navigation }) => {
           source={{ uri: trip.image }}
           style={{ height: 100, width: 100 }}
         />
-        {/* 👆🏻**/}
         <ShopItemStyled>{trip.title}</ShopItemStyled>
         <ShopItemStyled>{trip.description}</ShopItemStyled>
       </TouchableOpacity>
-      {/* 1.👇🏻why you are wrapping this with TouchableOpacity and the onPress is on the icon? */}
-      <TouchableOpacity>
-        {/*2.👇🏻Clean this up! if the user is the owner render the icon and that is it */}
-        {/** you should use alerting color for trash icon not black! also alert the user before delete. */}
+
+      <TouchableOpacity onPress={() => tripStore.deleteTrip(trip.id)}>
         {authStore.user?.id === trip.userId ? (
-          <FontAwesome5
-            name="trash"
-            size={24}
-            color="black"
-            onPress={() => tripStore.deleteTrip(trip.id)}
-          />
+          <FontAwesome5 name="trash" size={24} color="red" />
         ) : (
           <></>
         )}
-        {/*2.👆🏻 */}
       </TouchableOpacity>
-      {/* 1.👆🏻 */}
     </View>
   );
 };

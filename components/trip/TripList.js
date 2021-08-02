@@ -1,13 +1,14 @@
+/* Imports */
 import React from "react";
-//observer
-import { observer } from "mobx-react";
-//components
 import { Text, View } from "react-native";
 import { Heading, List, Spinner } from "native-base";
+/* Components */
 import TripItem from "./TripItem";
-//stores
+import AddBtn from "./AddButton/AddBtn";
+/* State and Store */
 import tripStore from "../../stores/tripStore";
-import { Title } from "./styles"; //please remove it if you are not using it
+import authStore from "../../stores/authStore";
+import { observer } from "mobx-react";
 
 const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
@@ -21,6 +22,9 @@ const TripList = ({ navigation }) => {
       <List style={{ width: "100%", height: "100%", alignItems: "center" }}>
         {tripList}
       </List>
+
+      // TODO: Render add button only if user is logged in.
+      <AddBtn navigation={navigation} />
     </View>
   );
 };

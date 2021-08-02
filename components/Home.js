@@ -61,6 +61,10 @@ const Home = ({ navigation }) => {
           <ButtonStyled onPress={() => navigation.navigate("Login")}>
             Log in
           </ButtonStyled>
+
+          <ButtonStyled onPress={() => navigation.navigate("Profile")}>
+            Profile
+          </ButtonStyled>
         </BottomStyling>
       </OverLayContainer>
     </HomeBackground>
