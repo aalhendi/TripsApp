@@ -25,7 +25,7 @@ class ProfileStore {
       for (const key in updatedProfile) {
         formData.append(key, updatedProfile[key]);
       }
-      const res = await instance.put(`/profiles/${profileId}`, formData);
+      const res = await instance.put(`/profiles/${this.profile.id}`, formData);
       for (const key in res.data) {
         this.profile[key] = res.data[key];
       }
