@@ -5,9 +5,11 @@ import { observer } from "mobx-react";
 import { Text, View } from "react-native";
 import { Heading, List, Spinner } from "native-base";
 import TripItem from "./TripItem";
+import AddBtn from "./AddButton/AddBtn";
 //stores
 import tripStore from "../../stores/tripStore";
 import { Title } from "./styles";
+import authStore from "../../stores/authStore";
 
 const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
@@ -21,6 +23,8 @@ const TripList = ({ navigation }) => {
       <List style={{ width: "100%", height: "100%", alignItems: "center" }}>
         {tripList}
       </List>
+
+      <AddBtn navigation={navigation} />
     </View>
   );
 };

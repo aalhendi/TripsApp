@@ -7,6 +7,7 @@ import TripList from "../trip/TripList";
 import Login from "../authentication/Login";
 import Register from "../authentication/Register";
 import TripDetail from "../trip/TripDetail";
+import AddTrip from "../trip/AddTrip";
 
 const Stack = createStackNavigator();
 export default RootNavigator = ({ theme }) => {
@@ -61,6 +62,14 @@ export default RootNavigator = ({ theme }) => {
       <Stack.Screen
         name="Register"
         component={Register}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="AddTrip"
+        component={AddTrip}
         options={{
           headerShown: false,
         }}

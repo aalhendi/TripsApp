@@ -20,6 +20,17 @@ class TripStore {
     }
   };
 
+  createTrip = async (newTrip) => {
+    try {
+      const formData = new FormData();
+      for (const key in newTrip) formData.append(key, newTrip[key]);
+      const res = await instance.post("/trips", formData);
+      this.trips.push(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   deleteTrip = async (tripId) => {
     try {
       await instance.delete(`/trips/${tripId}`);
