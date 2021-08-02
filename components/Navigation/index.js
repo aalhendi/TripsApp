@@ -8,6 +8,7 @@ import TripList from "../trip/TripList";
 import Login from "../authentication/Login";
 import Register from "../authentication/Register";
 import TripDetail from "../trip/TripDetail";
+import AddTrip from "../trip/AddTrip";
 import Profile from "../profile/Profile";
 import ProfileEdit from "../profile/ProfileEdit";
 
@@ -70,6 +71,8 @@ export default RootNavigator = ({ theme }) => {
       />
 
       <Stack.Screen
+        name="AddTrip"
+        component={AddTrip}
         name="Profile"
         component={Profile}
         options={{
