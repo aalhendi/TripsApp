@@ -4,19 +4,28 @@ import instance from "./instance";
 
 class ProfileStore {
   profile = null;
+  profiles = [];
   loading = true;
   constructor() {
     makeAutoObservable(this);
   }
 
+  fetchAll = async () => {
+    try {
+      res = await instance.get("/profiles");
+      this.profiles = res.data;
+      this.loading = false;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   setProfile = async (profileId) => {
     try {
-      res = await instance.get(`/profiles/${profileId}`);
-      this.profile = res.data;
+      this.profile = this.profiles.find((profile) => profile.id === profileId);
     } catch (error) {
       console.error(error);
     }
-    this.loading = false;
   };
 
   updateProfile = async (updatedProfile) => {
@@ -36,4 +45,5 @@ class ProfileStore {
 }
 
 const profileStore = new ProfileStore();
+profileStore.fetchAll();
 export default profileStore;

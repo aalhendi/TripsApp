@@ -8,7 +8,7 @@ import { View, Platform } from "react-native";
 /* State and Store */
 import profileStore from "../../stores/profileStore";
 
-const ProfileEdit = () => {
+const ProfileEdit = ({ navigation }) => {
   const [profile, setProfile] = useState({
     bio: profileStore.profile.bio,
     image: profileStore.profile.image,
@@ -16,6 +16,7 @@ const ProfileEdit = () => {
 
   const handleSubmit = () => {
     profileStore.updateProfile(profile);
+    navigation.replace("Profile");
   };
 
   useEffect(() => {

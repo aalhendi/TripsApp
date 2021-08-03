@@ -12,8 +12,11 @@ import AddTrip from "../trip/AddTrip";
 import Profile from "../profile/Profile";
 import ProfileEdit from "../profile/ProfileEdit";
 
+/*State and Store */
+import { observer } from "mobx-react-lite";
+
 const Stack = createStackNavigator();
-export default RootNavigator = ({ theme }) => {
+const RootNavigator = ({ theme }) => {
   return (
     <Stack.Navigator
       initialRouteName="Home"
@@ -75,8 +78,11 @@ export default RootNavigator = ({ theme }) => {
       <Stack.Screen
         name="Profile"
         component={Profile}
-        options={{
-          headerShown: false,
+        options={({ route }) => {
+          const { profile } = route.params;
+          return {
+            title: "My Profile",
+          };
         }}
       />
 
@@ -90,3 +96,5 @@ export default RootNavigator = ({ theme }) => {
     </Stack.Navigator>
   );
 };
+
+export default observer(RootNavigator);

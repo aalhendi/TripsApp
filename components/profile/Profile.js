@@ -9,15 +9,19 @@ import profileStore from "../../stores/profileStore";
 import authStore from "../../stores/authStore";
 import tripStore from "../../stores/tripStore";
 
-const Profile = ({ navigation }) => {
+const Profile = ({ navigation, route }) => {
+  // TODO: APP CRASHES WHEN NEW USER REGISTERS WHEN EVALUATING PROFILE
+
   if (authStore.loading || profileStore.loading) {
     return <Spinner />;
   }
 
+  const { profile } = route.params;
+
   let tripCount = 0;
   if (tripStore.trips) {
     tripCount = tripStore.trips.filter(
-      (trip) => trip.userId === authStore.user.id
+      (trip) => trip.userId === profile.id
     ).length;
   }
 
@@ -30,7 +34,7 @@ const Profile = ({ navigation }) => {
             {"Trip count: " + tripCount}
           </Heading>
           <Image
-            source={{ uri: profileStore.profile.image }}
+            source={{ uri: profile.image }}
             style={{
               borderRadius: 50,
               padding: 1,
@@ -40,7 +44,7 @@ const Profile = ({ navigation }) => {
             }}
             alt={"ProfilePicture"}
           />
-          <Heading>{profileStore.profile.bio}</Heading>
+          <Heading>{profile.bio}</Heading>
         </ScrollView>
         <FAB
           style={{ position: "absolute", margin: 16, right: 0, bottom: 0 }}
