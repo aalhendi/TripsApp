@@ -12,7 +12,6 @@ class AuthStore {
   }
 
   register = async (newUser) => {
-    
     try {
       const res = await instance.post("/register", newUser);
       this.setUser(res.data.token);
@@ -22,7 +21,6 @@ class AuthStore {
   };
 
   login = async (userData) => {
-    
     try {
       const res = await instance.post("/login", userData);
       this.setUser(res.data.token);
