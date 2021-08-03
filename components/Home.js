@@ -3,10 +3,8 @@ import React from "react";
 /* State and Store */
 import authStore from "../stores/authStore";
 import { observer } from "mobx-react-lite";
+import profileStore from "../stores/profileStore";
 
-// Styling
-
-// import { ImageBackground } from "react-native";
 import {
   HomeBackground,
   Title,
@@ -15,8 +13,6 @@ import {
   BottomStyling,
   ButtonStyled,
 } from "../styles";
-
-// import { View, Text } from "react-native";
 
 const Home = ({ navigation }) => {
   return (
@@ -44,11 +40,12 @@ const Home = ({ navigation }) => {
           <ButtonStyled onPress={() => navigation.navigate("TripList")}>
             Click here
           </ButtonStyled>
-          
+
           <ButtonStyled onPress={() => navigation.navigate("Register")}>
             Register
           </ButtonStyled>
 
+          {/* if the user is not logged in why would he see the logout button? */}
           <ButtonStyled
             onPress={
               authStore.user ? authStore.logout : () => alert("Not logged in!")
@@ -61,6 +58,13 @@ const Home = ({ navigation }) => {
             Log in
           </ButtonStyled>
 
+          <ButtonStyled
+            onPress={() =>
+              navigation.navigate("Profile", { profile: profileStore.profile })
+            }
+          >
+            Profile
+          </ButtonStyled>
         </BottomStyling>
       </OverLayContainer>
     </HomeBackground>

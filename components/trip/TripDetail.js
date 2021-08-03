@@ -20,6 +20,7 @@ import { Text, FAB } from "react-native-paper";
 
 
 
+// please if you are not using navigation remove it
 const TripDetail = ({ navigation, route }) => {
   const { trip } = route.params;
   if (tripStore.loading) {

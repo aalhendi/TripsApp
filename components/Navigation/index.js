@@ -1,16 +1,23 @@
+/* Imports */
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-//components
+/* Components */
 import Home from "../Home";
 import TripList from "../trip/TripList";
 import Login from "../authentication/Login";
 import Register from "../authentication/Register";
 import TripDetail from "../trip/TripDetail";
 import TripEdit from "../trip/TripEdit";
+import AddTrip from "../trip/AddTrip";
+import Profile from "../profile/Profile";
+import ProfileEdit from "../profile/ProfileEdit";
+
+/*State and Store */
+import { observer } from "mobx-react-lite";
 
 const Stack = createStackNavigator();
-export default RootNavigator = ({ theme }) => {
+const RootNavigator = ({ theme }) => {
   return (
     <Stack.Navigator
       initialRouteName="Home"
@@ -56,12 +63,6 @@ export default RootNavigator = ({ theme }) => {
         options={{
           headerShown: false,
         }}
-        // options={({ route }) => {
-        //   const { trip } = route.params;
-        //   return {
-        //     title: trip.title,
-        //   };
-        // }}
       />
       <Stack.Screen
         name="Login"
@@ -78,6 +79,29 @@ export default RootNavigator = ({ theme }) => {
           headerShown: false,
         }}
       />
+
+      <Stack.Screen name="AddTrip" component={AddTrip} />
+
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={({ route }) => {
+          const { profile } = route.params;
+          return {
+            title: "My Profile",
+          };
+        }}
+      />
+
+      <Stack.Screen
+        name="ProfileEdit"
+        component={ProfileEdit}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
 };
+
+export default observer(RootNavigator);
