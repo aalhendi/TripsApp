@@ -3,10 +3,8 @@ import React from "react";
 /* State and Store */
 import authStore from "../stores/authStore";
 import { observer } from "mobx-react-lite";
+import profileStore from "../stores/profileStore";
 
-// Styling
-
-// import { ImageBackground } from "react-native";
 import {
   HomeBackground,
   Title,
@@ -15,8 +13,6 @@ import {
   BottomStyling,
   ButtonStyled,
 } from "../styles";
-
-// import { View, Text } from "react-native";
 
 const Home = ({ navigation }) => {
   return (
@@ -62,7 +58,11 @@ const Home = ({ navigation }) => {
             Log in
           </ButtonStyled>
 
-          <ButtonStyled onPress={() => navigation.navigate("Profile")}>
+          <ButtonStyled
+            onPress={() =>
+              navigation.navigate("Profile", { profile: profileStore.profile })
+            }
+          >
             Profile
           </ButtonStyled>
         </BottomStyling>
