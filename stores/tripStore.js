@@ -37,16 +37,13 @@ class TripStore {
       for (const key in updatedTrip) {
         formData.append(key, updatedTrip[key]);
       }
-      console.log(updatedTrip);
       const res = await instance.put(`/trips/${updatedTrip.id}`, formData);
       const myTrip = this.trips.find((myTrip)=> myTrip.id === res.data.id);
       for (const key in myTrip) {
-        //use find for object and edit above for
         myTrip[key] = res.data[key];
       }
 
     } catch (error) {
-      console.log("\n\n ITS NOT WORKING \n\n")
       console.error(error);
     }
   };
