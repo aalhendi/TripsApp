@@ -23,7 +23,7 @@ const TripList = ({ navigation }) => {
         {tripList}
       </List>
 
-      // TODO: Render add button only if user is logged in.
+      {/*TODO: Render add button only if user is logged in. */}
       <AddBtn navigation={navigation} />
     </View>
   );

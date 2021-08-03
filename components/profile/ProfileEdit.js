@@ -71,6 +71,7 @@ const ProfileEdit = () => {
         </Text>
         <TextInput
           label="bio"
+          value={profile.bio}
           autoCapitalize="sentences"
           onChangeText={(bio) => setProfile({ ...profile, bio })}
           placeholder="Tell us something about yourself."
