@@ -5,6 +5,7 @@ import { observer } from "mobx-react";
 import { Text, View } from "react-native";
 import { Heading, List, Spinner } from "native-base";
 import TripItem from "./TripItem";
+import { ScrollView } from "react-native";
 //stores
 import tripStore from "../../stores/tripStore";
 
@@ -17,9 +18,10 @@ const TripList = ({ navigation }) => {
   ));
   return (
     <View style={{ flex: 1, alignItems: "center" }}>
-      <Heading style={{ margin: "1%" }}>Trip List</Heading>
+      <Heading style={{ margin: "10%" }}>Trip List</Heading>
+      
       <List style={{ width: "100%", height: "100%", alignItems: "center" }}>
-        {tripList}
+        <ScrollView>{tripList}</ScrollView> 
       </List>
     </View>
   );
