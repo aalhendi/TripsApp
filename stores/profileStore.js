@@ -3,7 +3,6 @@ import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 
 class ProfileStore {
-  profile = null;
   profiles = [];
   loading = true;
   constructor() {
@@ -20,23 +19,21 @@ class ProfileStore {
     }
   };
 
-  setProfile = async (profileId) => {
-    try {
-      this.profile = this.profiles.find((profile) => profile.id === profileId);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   updateProfile = async (updatedProfile) => {
     try {
       const formData = new FormData();
       for (const key in updatedProfile) {
         formData.append(key, updatedProfile[key]);
       }
-      const res = await instance.put(`/profiles/${this.profile.id}`, formData);
-      for (const key in res.data) {
-        this.profile[key] = res.data[key];
+      const profile = this.profiles.find(
+        (profile) => profile.id === updatedProfile.userId
+      );
+      const res = await instance.put(
+        `/profiles/${updatedProfile.userId}`,
+        formData
+      );
+      for (const key in profile) {
+        profile[key] = res.data[key];
       }
     } catch (error) {
       console.error(error);

@@ -8,15 +8,20 @@ import { View, Platform } from "react-native";
 /* State and Store */
 import profileStore from "../../stores/profileStore";
 
-const ProfileEdit = ({ navigation }) => {
+const ProfileEdit = ({ navigation, route }) => {
+  const oldProfile = route.params.profile;
+
   const [profile, setProfile] = useState({
-    bio: profileStore.profile.bio,
-    image: profileStore.profile.image,
+    bio: oldProfile.bio,
+    image: oldProfile.image,
+    userId: oldProfile.userId,
+    username: oldProfile.username,
   });
 
-  const handleSubmit = () => {
-    profileStore.updateProfile(profile);
-    navigation.replace("Profile");
+  const handleSubmit = async () => {
+    // TODO: Fix live rendering of updated profile
+    await profileStore.updateProfile(profile);
+    navigation.goBack();
   };
 
   useEffect(() => {

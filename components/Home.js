@@ -15,6 +15,10 @@ import {
 } from "../styles";
 
 const Home = ({ navigation }) => {
+  const profile = profileStore.profiles.find(
+    (profile) => profile.id === authStore.user?.id
+  );
+
   return (
     <HomeBackground
       style={{ flex: 1, width: "100%", height: "20%" }}
@@ -58,10 +62,9 @@ const Home = ({ navigation }) => {
             Log in
           </ButtonStyled>
 
+          {/* TODO: Fix navigation permissions, only show profile if user logged in*/}
           <ButtonStyled
-            onPress={() =>
-              navigation.navigate("Profile", { profile: profileStore.profile })
-            }
+            onPress={() => navigation.navigate("Profile", { profile: profile })}
           >
             Profile
           </ButtonStyled>

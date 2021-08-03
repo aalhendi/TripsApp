@@ -50,7 +50,9 @@ const Profile = ({ navigation, route }) => {
           style={{ position: "absolute", margin: 16, right: 0, bottom: 0 }}
           medium
           icon="plus"
-          onPress={() => navigation.navigate("ProfileEdit")}
+          onPress={() =>
+            navigation.navigate("ProfileEdit", { profile: profile })
+          }
         />
       </View>
     </>

@@ -88,7 +88,7 @@ const RootNavigator = ({ theme }) => {
         options={({ route }) => {
           const { profile } = route.params;
           return {
-            title: "My Profile",
+            title: profile.username,
           };
         }}
       />
@@ -96,8 +96,11 @@ const RootNavigator = ({ theme }) => {
       <Stack.Screen
         name="ProfileEdit"
         component={ProfileEdit}
-        options={{
-          headerShown: false,
+        options={({ route }) => {
+          const { profile } = route.params;
+          return {
+            title: profile.username,
+          };
         }}
       />
     </Stack.Navigator>

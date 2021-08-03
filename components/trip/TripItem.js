@@ -1,8 +1,7 @@
-
 /* Imports */
 import React from "react";
-// import { FontAwesome5 } from "@expo/vector-icons";
-// import { MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 /* Components */
 import { Text, TouchableOpacity, View } from "react-native"; //remove Text if you are not using it
 import { Image } from "react-native";
