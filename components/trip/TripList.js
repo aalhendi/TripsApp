@@ -14,8 +14,6 @@ import profileStore from "../../stores/profileStore";
 const TripList = ({ navigation }) => {
   if (tripStore.loading || profileStore.loading) return <Spinner />;
 
-  console.log(tripStore.trips);
-
   const tripList = tripStore.trips?.map((trip) => (
     <TripItem trip={trip} key={trip.id} navigation={navigation} />
   ));

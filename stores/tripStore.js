@@ -2,7 +2,9 @@
 import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 
+
 class TripStore {
+  
   trips = [];
   loading = true;
 
@@ -39,8 +41,24 @@ class TripStore {
       console.error(error);
     }
   };
-}
 
+  updateTrip = async (updatedTrip) => {
+    try {
+      const formData = new FormData();
+      for (const key in updatedTrip) {
+        formData.append(key, updatedTrip[key]);
+      }
+      const res = await instance.put(`/trips/${updatedTrip.id}`, formData);
+      const myTrip = this.trips.find((myTrip)=> myTrip.id === res.data.id);
+      for (const key in myTrip) {
+        myTrip[key] = res.data[key];
+      }
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
 const tripStore = new TripStore();
 tripStore.fetchtrips();
 

@@ -8,6 +8,7 @@ import TripList from "../trip/TripList";
 import Login from "../authentication/Login";
 import Register from "../authentication/Register";
 import TripDetail from "../trip/TripDetail";
+import TripEdit from "../trip/TripEdit";
 import AddTrip from "../trip/AddTrip";
 import Profile from "../profile/Profile";
 import ProfileEdit from "../profile/ProfileEdit";
@@ -56,7 +57,13 @@ const RootNavigator = ({ theme }) => {
           };
         }}
       />
-
+      <Stack.Screen
+        name="TripEdit"
+        component={TripEdit}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Stack.Screen
         name="Login"
         component={Login}
