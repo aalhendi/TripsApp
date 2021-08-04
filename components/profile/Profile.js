@@ -32,6 +32,9 @@ const Profile = ({ navigation, route }) => {
         <ScrollView>
           <Heading style={{ alignSelf: "center" }}>
             {"Trip count: " + tripCount}
+            {/* Why not do this: */}
+            Trip count: {tripCount}
+            {/* ? */}
           </Heading>
           <Image
             source={{ uri: profile.image }}

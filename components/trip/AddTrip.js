@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useContext } from "react";
 // import ImagePicker from "react-native-image-picker";
 //TODO:Image
+// I think image is done
 //components
 import tripStore from "../../stores/tripStore";
 import { observer } from "mobx-react-lite";
