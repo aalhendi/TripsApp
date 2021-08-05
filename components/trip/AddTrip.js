@@ -11,10 +11,10 @@ import {
   AddButton,
   AddTripButtonText,
   AddImageButton,
+  SubmitButton,
 } from "./styles";
 //
-import { View, Platform } from "react-native";
-import { Image } from "native-base";
+import { Platform } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 
 const AddTrip = ({ navigation }) => {
@@ -73,25 +73,25 @@ const AddTrip = ({ navigation }) => {
         <AddTripTitle> Add Trip </AddTripTitle>
         <AddTextInput
           label="title"
-          autoCapitalize="none"
+          autoCapitalize="sentences"
           placeholder="title"
           onChangeText={(title) => setNewTrip({ ...newTrip, title })}
         />
         <AddTextInput
           label="description"
-          autoCapitalize="none"
+          autoCapitalize="sentences"
           placeholder="description"
           onChangeText={(description) =>
             setNewTrip({ ...newTrip, description })
           }
         />
 
-        <AddButton onPress={pickImage}>
+        <AddImageButton onPress={pickImage}>
           <AddTripButtonText>Add Image</AddTripButtonText>
-        </AddButton>
-        <AddButton onPress={handleSubmit}>
+        </AddImageButton>
+        <SubmitButton onPress={handleSubmit}>
           <AddTripButtonText>Submit</AddTripButtonText>
-        </AddButton>
+        </SubmitButton>
       </Container>
     </>
   );

@@ -1,11 +1,17 @@
 /* Imports */
 import React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
-/* Components */
-import { Text, TouchableOpacity, View } from "react-native"; //remove Text if you are not using it
-import { Image } from "react-native";
-import { ShopItemStyled } from "./styles";
+/* styles */
+import {
+  TripTitleStyled,
+  ItemWrapper,
+  ItemTouchableOpacity,
+  TripImage,
+  ProfileButton,
+  ProfileNameText,
+  ProfileImage,
+  DeleteOpacityStyled,
+} from "./styles";
 /* State and Store */
 import tripStore from "../../stores/tripStore";
 import authStore from "../../stores/authStore";
@@ -18,45 +24,34 @@ const TripItem = ({ trip, navigation }) => {
   );
 
   return (
-    // TODO: MOVE ALL STYLES TO styles.js
     <ScrollView>
-      <View style={{ margin: "1%" }}>
-        <TouchableOpacity
+      <ItemWrapper>
+        <ItemTouchableOpacity
           onPress={() => navigation.navigate("TripDetail", { trip: trip })}
           style={{ flex: 1 }}
         >
-          <Image
-            source={{ uri: trip.image }}
-            style={{ height: 100, width: 100 }}
-          />
-          <ShopItemStyled>{trip.title}</ShopItemStyled>
-          <TouchableOpacity
-            style={{ flex: 1, flexDirection: "row" }}
+          <TripImage source={{ uri: trip.image }} />
+          <TripTitleStyled>{trip.title}</TripTitleStyled>
+          <ProfileButton
             onPress={() =>
               navigation.navigate("Profile", {
                 profile: ownerProfile,
               })
             }
           >
-            <Text style={{ fontSize: 30 }}>{ownerProfile.username}</Text>
-            <Image
-              source={{ uri: ownerProfile.image }}
-              style={{ width: 40, height: 40, borderRadius: 50 }}
-            />
-          </TouchableOpacity>
-        </TouchableOpacity>
+            <ProfileNameText>{ownerProfile.username}</ProfileNameText>
+            <ProfileImage source={{ uri: ownerProfile.image }} />
+          </ProfileButton>
+        </ItemTouchableOpacity>
 
-        <TouchableOpacity
-          style={{ flex: 1 }}
-          onPress={() => tripStore.deleteTrip(trip.id)}
-        >
+        <DeleteOpacityStyled onPress={() => tripStore.deleteTrip(trip.id)}>
           {authStore.user?.id === trip.userId ? (
-            <FontAwesome5 name="trash" size={24} color="red" />
+            <FontAwesome5 name="trash" size={20} color="red" />
           ) : (
             <></>
           )}
-        </TouchableOpacity>
-      </View>
+        </DeleteOpacityStyled>
+      </ItemWrapper>
     </ScrollView>
   );
 };

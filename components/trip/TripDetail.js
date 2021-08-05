@@ -61,7 +61,7 @@ const TripDetail = ({ navigation, route }) => {
         <FAB
           onPress={() => navigation.navigate("TripEdit", { trip: trip })}
           style={{ position: "absolute", margin: 16, right: 0, bottom: 0 }}
-          medium
+          small
           icon="update"
         />
       ) : (

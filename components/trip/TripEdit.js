@@ -8,6 +8,16 @@ import { View, Platform } from "react-native";
 /* State and Store */
 import tripStore from "../../stores/tripStore";
 
+/*styles*/
+import {
+  TripEditWrapper,
+  TitleTextstyled,
+  DescriptionTextstyled,
+  SubmitButton,
+  AddImageButton,
+  TextStyled,
+} from "./styles";
+
 //TODO: keep defualt pic if not updated
 const TripEdit = ({ navigation, route }) => {
   const oldTrip = route.params.trip;
@@ -63,17 +73,8 @@ const TripEdit = ({ navigation, route }) => {
 
   return (
     <>
-      <View style={{ flex: 1, margin: "2%" }}>
-        <Text
-          style={{
-            fontSize: 16,
-            fontWeight: "bold",
-            marginTop: 10,
-            marginLeft: 10,
-          }}
-        >
-          Title
-        </Text>
+      <TripEditWrapper>
+        <TitleTextstyled>Title</TitleTextstyled>
         <TextInput
           defaultValue={oldTrip.title}
           label="title"
@@ -81,16 +82,7 @@ const TripEdit = ({ navigation, route }) => {
           onChangeText={(title) => setTrip({ ...trip, title })}
           placeholder="Where did you go?"
         />
-        <Text
-          style={{
-            fontSize: 16,
-            fontWeight: "bold",
-            marginTop: 10,
-            marginLeft: 10,
-          }}
-        >
-          Description
-        </Text>
+        <DescriptionTextstyled>Description</DescriptionTextstyled>
         <TextInput
           defaultValue={oldTrip.description}
           label="description"
@@ -98,9 +90,13 @@ const TripEdit = ({ navigation, route }) => {
           onChangeText={(description) => setTrip({ ...trip, description })}
           placeholder="Tell me more!!"
         />
-        <Button onPress={pickImage}>Select Image</Button>
-        <Button onPress={handleSubmit}>Submit</Button>
-      </View>
+        <AddImageButton onPress={pickImage}>
+          <TextStyled>Add Image</TextStyled>
+        </AddImageButton>
+        <SubmitButton onPress={handleSubmit}>
+          <TextStyled>Submit</TextStyled>
+        </SubmitButton>
+      </TripEditWrapper>
     </>
   );
 };

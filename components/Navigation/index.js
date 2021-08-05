@@ -43,7 +43,7 @@ const RootNavigator = ({ theme }) => {
         name="TripList"
         component={TripList}
         options={{
-          headerShown: false,
+          headerShown: true,
         }}
       />
 
