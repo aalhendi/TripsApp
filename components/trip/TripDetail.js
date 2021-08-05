@@ -1,33 +1,25 @@
+/* Imports */
 import React from "react";
+import { View, Spinner } from "native-base";
+import { ScrollView, TouchableOpacity, Alert } from "react-native";
+import { Text, FAB } from "react-native-paper";
+import EditBtn from "./Buttons/EditBtn";
+import DeleteBtn from "./Buttons/DeleteBtn";
 
-//stores
+/* Styles */
+import { DetailTitle, DetailImage, DetailWrapper } from "./styles";
+
+/* State and Store */
 import tripStore from "../../stores/tripStore";
 import authStore from "../../stores/authStore";
-
-//observer
 import { observer } from "mobx-react";
 
-//styles
-import { DetailTitle, DetailImage, DetailWrapper } from "./styles";
-import { FontAwesome5 } from "@expo/vector-icons";
-
-//native-base
-import { View, Spinner } from "native-base";
-import { ScrollView, TouchableOpacity } from "react-native";
-import { Text, FAB } from "react-native-paper";
-
-// please if you are not using navigation remove it
 const TripDetail = ({ navigation, route }) => {
   const { trip } = route.params;
+
   if (tripStore.loading || authStore.loading) {
     return <Spinner />;
   }
-
-  const handleDelete = () => {
-    // TODO: Delete confirmation alert
-    // i think its deleted...
-    tripStore.deleteTrip(trip.id);
-  };
 
   return (
     <>
@@ -47,29 +39,11 @@ const TripDetail = ({ navigation, route }) => {
             />
             <DetailTitle>{trip.title}</DetailTitle>
             <Text>{trip.description}</Text>
-            <TouchableOpacity onPress={handleDelete}>
-              {/* whenever you have a condition like this where the else is empty, you can use && instead. like this:
-              {CONDITION && <FontAwesome ... />}
-             */}
-              {authStore.user?.id === trip.userId ? (
-                <FontAwesome5 name="trash" size={29} color="red" />
-              ) : (
-                <></>
-              )}
-            </TouchableOpacity>
+            <DeleteBtn trip={trip} navigation={navigation} />
           </DetailWrapper>
         </ScrollView>
       </View>
-      {authStore.user?.id === trip.userId ? (
-        <FAB
-          onPress={() => navigation.navigate("TripEdit", { trip: trip })}
-          style={{ position: "absolute", margin: 16, right: 0, bottom: 0 }}
-          medium
-          icon="update"
-        />
-      ) : (
-        <></>
-      )}
+      <EditBtn trip={trip} navigation={navigation} />
     </>
   );
 };

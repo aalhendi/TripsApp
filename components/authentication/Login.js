@@ -1,5 +1,7 @@
+/* Imports */
 import React, { useState } from "react";
 
+/* Styles */
 import {
   AuthTitle,
   AuthContainer,
@@ -9,10 +11,8 @@ import {
   AuthOther,
 } from "./styles";
 
-//stores
+/* State and Store */
 import authStore from "../../stores/authStore";
-
-//observer
 import { observer } from "mobx-react";
 
 const Login = ({ navigation }) => {
@@ -20,33 +20,40 @@ const Login = ({ navigation }) => {
     username: "",
     password: "",
   });
-  const handleSubmit = async () => {
-    await authStore.login(user);
-    // what if the login failed? and there is no user in authStore.user?
-    if (authStore.user) navigation.replace("TripList");
-  };
-  return (
-    <AuthContainer>
-      <AuthTitle>Log in</AuthTitle>
-      <AuthTextInput
-        placeholder="username"
-        autoCapitalize="none"
-        onChangeText={(username) => setUser({ ...user, username })}
-      />
-      <AuthTextInput
-        placeholder="password"
-        autoCapitalize="none"
-        secureTextEntry={true}
-        onChangeText={(password) => setUser({ ...user, password })}
-      />
-      <AuthButton onPress={handleSubmit}>
-        <AuthButtonText>Log in</AuthButtonText>
-      </AuthButton>
 
-      <AuthOther onPress={() => navigation.navigate("Register")}>
-        Click here to Register
-      </AuthOther>
-    </AuthContainer>
+  const handleSubmit = async () => {
+    const loginStatus = await authStore.login(user);
+    if (loginStatus) {
+      navigation.replace("TripExplore");
+    } else {
+      alert("Invalid Credentials");
+    }
+  };
+
+  return (
+    <>
+      <AuthContainer>
+        <AuthTitle>Log in</AuthTitle>
+        <AuthTextInput
+          placeholder="username"
+          autoCapitalize="none"
+          onChangeText={(username) => setUser({ ...user, username })}
+        />
+        <AuthTextInput
+          placeholder="password"
+          autoCapitalize="none"
+          secureTextEntry={true}
+          onChangeText={(password) => setUser({ ...user, password })}
+        />
+        <AuthButton onPress={handleSubmit}>
+          <AuthButtonText>Log in</AuthButtonText>
+        </AuthButton>
+
+        <AuthOther onPress={() => navigation.navigate("Register")}>
+          Tap here to Register
+        </AuthOther>
+      </AuthContainer>
+    </>
   );
 };
 export default observer(Login);
