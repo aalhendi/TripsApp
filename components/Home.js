@@ -41,7 +41,7 @@ const Home = ({ navigation }) => {
         <BottomStyling>
           {/* add where to go */}
 
-          <ButtonStyled onPress={() => navigation.navigate("TripList")}>
+          <ButtonStyled onPress={() => navigation.navigate("TripExplore")}>
             Click here
           </ButtonStyled>
 

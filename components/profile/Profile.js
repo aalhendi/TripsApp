@@ -3,6 +3,8 @@ import React from "react";
 import { View, Heading, Spinner, Image } from "native-base";
 import { ScrollView, StyleSheet } from "react-native";
 import { FAB } from "react-native-paper";
+/* Components */
+import TripList from "../trip/TripList";
 /* State and Store */
 import { observer } from "mobx-react-lite";
 import profileStore from "../../stores/profileStore";
@@ -28,7 +30,14 @@ const Profile = ({ navigation, route }) => {
   // TODO: MOVE STYLES TO styles.js
   return (
     <>
-      <View style={{ flex: 1, alignItems: "center", marginTop: "2%" }}>
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          marginTop: "2%",
+          width: "100%",
+        }}
+      >
         <ScrollView>
           <Heading style={{ alignSelf: "center" }}>
             {"Trip count: " + tripCount}
@@ -45,6 +54,7 @@ const Profile = ({ navigation, route }) => {
             alt={"ProfilePicture"}
           />
           <Heading>{profile.bio}</Heading>
+          <TripList inProfile={true} navigation={navigation} />
         </ScrollView>
         <FAB
           style={{ position: "absolute", margin: 16, right: 0, bottom: 0 }}
