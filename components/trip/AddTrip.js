@@ -64,7 +64,7 @@ const AddTrip = ({ navigation }) => {
 
   const handleSubmit = async () => {
     await tripStore.createTrip(newTrip);
-    navigation.replace("TripList");
+    navigation.goBack();
   };
 
   return (

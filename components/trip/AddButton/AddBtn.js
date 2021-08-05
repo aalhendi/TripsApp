@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import authStore from "../../../stores/authStore";
 
 const AddBtn = ({ navigation }) => {
-  if (authStore.login)
+  if (authStore.user?.id) {
     return (
       <FAB
         style={{ margin: 16, position: "absolute", right: 0, bottom: 0 }}
@@ -13,6 +13,7 @@ const AddBtn = ({ navigation }) => {
         onPress={() => navigation.navigate("AddTrip")}
       />
     );
+  }
 };
 
 export default observer(AddBtn);

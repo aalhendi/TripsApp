@@ -26,7 +26,6 @@ const TripDetail = ({ navigation, route }) => {
   const handleDelete = () => {
     // TODO: Delete confirmation alert
     tripStore.deleteTrip(trip.id);
-    navigation.replace("TripList");
   };
 
   return (
