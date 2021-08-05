@@ -23,6 +23,7 @@ const Register = ({ navigation }) => {
   const handleSubmit = async () => {
     const registerStatus = await authStore.register(userInfo);
     if (registerStatus) {
+      navigation.goBack();
       navigation.replace("TripExplore");
     } else {
       alert("Register failed");

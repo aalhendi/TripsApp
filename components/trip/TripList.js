@@ -1,6 +1,6 @@
 /* Imports */
 import React from "react";
-import { List, Spinner } from "native-base";
+import { List, Spinner, View } from "native-base";
 /* Components */
 import TripItem from "./TripItem";
 /* State and Store */
@@ -30,7 +30,7 @@ const TripList = ({ navigation, inProfile, trips }) => {
     />
   ));
 
-  return <List style={{ border: "none" }}>{tripList}</List>;
+  return <View>{tripList}</View>;
 };
 
 export default observer(TripList);

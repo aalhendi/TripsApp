@@ -13,6 +13,7 @@ const AddBtn = ({ navigation }) => {
         style={{ margin: 16, position: "absolute", right: 0, bottom: 0 }}
         small
         icon="plus"
+        color="white"
         onPress={() => navigation.navigate("AddTrip")}
       />
     );

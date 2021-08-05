@@ -119,6 +119,7 @@ export const AddTripButtonText = styled.Text`
 export const ProfileNameText = styled.Text`
   font-size: 30px;
   color: ${(props) => props.theme.green};
+  margin-right: 10px;
 `;
 
 export const AddImageButton = styled.TouchableOpacity`

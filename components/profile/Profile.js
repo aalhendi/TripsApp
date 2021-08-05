@@ -1,8 +1,7 @@
 /* Imports */
 import React from "react";
-import { View, Heading, Spinner, Image } from "native-base";
-import { ScrollView, StyleSheet } from "react-native";
-import { FAB } from "react-native-paper";
+import { Spinner } from "native-base";
+import { ScrollView } from "react-native";
 /* Components */
 import TripList from "../trip/TripList";
 /* State and Store */
@@ -48,14 +47,16 @@ const Profile = ({ navigation, route }) => {
           <BioStyled>{profile.bio}</BioStyled>
           <TripList inProfile={true} navigation={navigation} trips={trips} />
         </ScrollView>
-        <ProfileAdd
-          color="white"
-          small
-          icon="account-edit-outline"
-          onPress={() =>
-            navigation.navigate("ProfileEdit", { profile: profile })
-          }
-        />
+        {authStore.user?.id === profile.id && (
+          <ProfileAdd
+            color="white"
+            small
+            icon="account-edit-outline"
+            onPress={() =>
+              navigation.navigate("ProfileEdit", { profile: profile })
+            }
+          />
+        )}
       </ProfileWrapper>
     </>
   );

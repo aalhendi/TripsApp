@@ -25,8 +25,9 @@ export const ProfileImageStyled = styled.Image`
 
 export const BioStyled = styled.Text`
   align-self: center;
-  font-size: 27px;
+  font-size: 24px;
   font-weight: bold;
+  margin-horizontal: 2%;
   color: ${(props) => props.theme.green};
 `;
 
