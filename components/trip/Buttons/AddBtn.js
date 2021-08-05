@@ -1,5 +1,8 @@
+/* Imports */
 import React from "react";
 import { FAB } from "react-native-paper";
+
+/* State and Store */
 import { observer } from "mobx-react-lite";
 import authStore from "../../../stores/authStore";
 

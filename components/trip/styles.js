@@ -17,7 +17,8 @@ export const ListWrapper = styled.View`
 `;
 
 export const ItemWrapper = styled.View`
-  margin: 1%;
+  margin-vertical: 5%;
+  align-items: center;
 `;
 
 export const TripEditWrapper = styled.View`
@@ -34,8 +35,6 @@ export const Textstyled = styled.Text`
 `;
 
 export const Liststyled = styled(List)`
-  width: 100%;
-  height: 100%;
   align-items: center;
 `;
 
@@ -141,8 +140,9 @@ export const AddTrip = styled(FAB)`
 `;
 
 export const TripImage = styled.Image`
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
 `;
 
 export const ProfileImage = styled.Image`

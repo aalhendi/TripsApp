@@ -5,6 +5,7 @@ export const ProfileWrapper = styled.View`
   flex: 1;
   align-items: center;
   margin-top: 2%;
+  width: 100%;
 `;
 
 export const CountStyled = styled.Text`
