@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useCallback, useContext } from "react";
-// import ImagePicker from "react-native-image-picker";
-//TODO:Image
-// I think image is done
-//components
-import tripStore from "../../stores/tripStore";
-import { observer } from "mobx-react-lite";
+/* Imports */
+import React, { useState, useEffect } from "react";
+import { Platform } from "react-native";
+import * as ImagePicker from "expo-image-picker";
+
+/* Styles */
 import {
   Container,
   AddTripTitle,
@@ -13,10 +12,9 @@ import {
   AddTripButtonText,
   AddImageButton,
 } from "./styles";
-//
-import { View, Platform } from "react-native";
-import { Image } from "native-base";
-import * as ImagePicker from "expo-image-picker";
+
+/* State and Store */
+import tripStore from "../../stores/tripStore";
 
 const AddTrip = ({ navigation }) => {
   const [newTrip, setNewTrip] = useState({
@@ -87,9 +85,9 @@ const AddTrip = ({ navigation }) => {
           }
         />
 
-        <AddButton onPress={pickImage}>
+        <AddImageButton onPress={pickImage}>
           <AddTripButtonText>Add Image</AddTripButtonText>
-        </AddButton>
+        </AddImageButton>
         <AddButton onPress={handleSubmit}>
           <AddTripButtonText>Submit</AddTripButtonText>
         </AddButton>

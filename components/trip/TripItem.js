@@ -1,9 +1,8 @@
 /* Imports */
 import React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
 /* Components */
-import { Text, TouchableOpacity, View } from "react-native"; //remove Text if you are not using it
+import { Text, TouchableOpacity, View } from "react-native";
 import { Image } from "react-native";
 import { ShopItemStyled } from "./styles";
 /* State and Store */
@@ -50,10 +49,8 @@ const TripItem = ({ trip, navigation }) => {
           style={{ flex: 1 }}
           onPress={() => tripStore.deleteTrip(trip.id)}
         >
-          {authStore.user?.id === trip.userId ? (
+          {authStore.user?.id === trip.userId && (
             <FontAwesome5 name="trash" size={24} color="red" />
-          ) : (
-            <></>
           )}
         </TouchableOpacity>
       </View>
