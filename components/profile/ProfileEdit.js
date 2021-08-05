@@ -1,12 +1,20 @@
 /* Imports */
 import React, { useState, useEffect } from "react";
-import { Button } from "native-base";
-import { TextInput, Text } from "react-native-paper";
+import { TextInput } from "react-native-paper";
 import * as ImagePicker from "expo-image-picker";
-import { View, Platform } from "react-native";
+import { Platform } from "react-native";
 
 /* State and Store */
 import profileStore from "../../stores/profileStore";
+
+/*Styles*/
+import {
+  ProfileEditedWrapper,
+  BioTextStyled,
+  ImageButtonStyled,
+  SubmitButtonStyled,
+  TextStyled,
+} from "./styles";
 
 const ProfileEdit = ({ navigation, route }) => {
   const oldProfile = route.params.profile;
@@ -64,17 +72,8 @@ const ProfileEdit = ({ navigation, route }) => {
 
   return (
     <>
-      <View style={{ flex: 1, margin: "2%" }}>
-        <Text
-          style={{
-            fontSize: 16,
-            fontWeight: "bold",
-            marginTop: 10,
-            marginLeft: 10,
-          }}
-        >
-          Bio
-        </Text>
+      <ProfileEditedWrapper>
+        <BioTextStyled>Bio</BioTextStyled>
         <TextInput
           label="bio"
           value={profile.bio}
@@ -82,9 +81,13 @@ const ProfileEdit = ({ navigation, route }) => {
           onChangeText={(bio) => setProfile({ ...profile, bio })}
           placeholder="Tell us something about yourself."
         />
-        <Button onPress={pickImage}>Select Image</Button>
-        <Button onPress={handleSubmit}>Submit</Button>
-      </View>
+        <ImageButtonStyled onPress={pickImage}>
+          <TextStyled>Select Image</TextStyled>
+        </ImageButtonStyled>
+        <SubmitButtonStyled onPress={handleSubmit}>
+          <TextStyled>Submit</TextStyled>
+        </SubmitButtonStyled>
+      </ProfileEditedWrapper>
     </>
   );
 };

@@ -8,6 +8,13 @@ import tripStore from "../../stores/tripStore";
 import authStore from "../../stores/authStore";
 import profileStore from "../../stores/profileStore";
 import { observer } from "mobx-react";
+/*Styles*/
+import {
+  ListWrapper,
+  Textstyled,
+  Liststyled,
+  ScrollViewStyled,
+} from "./styles";
 
 const TripList = ({ navigation, inProfile }) => {
   //TODO: Finish styling and move styles to ./styles.js
@@ -23,10 +30,7 @@ const TripList = ({ navigation, inProfile }) => {
 
   return (
     <>
-      <Heading style={{ margin: "1%" }}>Trip List</Heading>
-      <List style={{ width: "100%", height: "100%", alignItems: "center" }}>
-        {tripList}
-      </List>
+          <Liststyled>{tripList}</Liststyled>
     </>
   );
 };

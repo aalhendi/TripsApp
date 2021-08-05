@@ -11,6 +11,7 @@ import {
   AddButton,
   AddTripButtonText,
   AddImageButton,
+  SubmitButton,
 } from "./styles";
 
 /* State and Store */
@@ -72,13 +73,13 @@ const AddTrip = ({ navigation }) => {
         <AddTripTitle> Add Trip </AddTripTitle>
         <AddTextInput
           label="title"
-          autoCapitalize="none"
+          autoCapitalize="sentences"
           placeholder="title"
           onChangeText={(title) => setNewTrip({ ...newTrip, title })}
         />
         <AddTextInput
           label="description"
-          autoCapitalize="none"
+          autoCapitalize="sentences"
           placeholder="description"
           onChangeText={(description) =>
             setNewTrip({ ...newTrip, description })
@@ -88,9 +89,9 @@ const AddTrip = ({ navigation }) => {
         <AddImageButton onPress={pickImage}>
           <AddTripButtonText>Add Image</AddTripButtonText>
         </AddImageButton>
-        <AddButton onPress={handleSubmit}>
+        <SubmitButton onPress={handleSubmit}>
           <AddTripButtonText>Submit</AddTripButtonText>
-        </AddButton>
+        </SubmitButton>
       </Container>
     </>
   );

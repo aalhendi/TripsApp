@@ -11,6 +11,15 @@ import profileStore from "../../stores/profileStore";
 import authStore from "../../stores/authStore";
 import tripStore from "../../stores/tripStore";
 
+/*Styles*/
+import {
+  ProfileWrapper,
+  CountStyled,
+  ProfileImageStyled,
+  BioStyled,
+  ProfileAdd,
+} from "./styles";
+
 const Profile = ({ navigation, route }) => {
   // TODO: APP CRASHES WHEN NEW USER REGISTERS WHEN EVALUATING PROFILE
 
@@ -30,41 +39,25 @@ const Profile = ({ navigation, route }) => {
   // TODO: MOVE STYLES TO styles.js
   return (
     <>
-      <View
-        style={{
-          flex: 1,
-          alignItems: "center",
-          marginTop: "2%",
-          width: "100%",
-        }}
-      >
+      <ProfileWrapper>
         <ScrollView>
-          <Heading style={{ alignSelf: "center" }}>
-            Trip count: {tripCount}
-          </Heading>
-          <Image
+          <CountStyled> Trip count: {tripCount}</CountStyled>
+          <ProfileImageStyled
             source={{ uri: profile.image }}
-            style={{
-              borderRadius: 50,
-              padding: 1,
-              height: 100,
-              width: 100,
-              alignSelf: "center",
-            }}
             alt={"ProfilePicture"}
           />
-          <Heading>{profile.bio}</Heading>
+          <BioStyled>{profile.bio}</BioStyled>
           <TripList inProfile={true} navigation={navigation} />
         </ScrollView>
-        <FAB
-          style={{ position: "absolute", margin: 16, right: 0, bottom: 0 }}
-          medium
+        <ProfileAdd
+          color="white"
+          small
           icon="plus"
           onPress={() =>
             navigation.navigate("ProfileEdit", { profile: profile })
           }
         />
-      </View>
+      </ProfileWrapper>
     </>
   );
 };
