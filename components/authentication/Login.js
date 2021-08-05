@@ -9,7 +9,7 @@ import {
   AuthOther,
 } from "./styles";
 
-// //stores
+//stores
 import authStore from "../../stores/authStore";
 
 //observer

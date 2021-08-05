@@ -24,6 +24,7 @@ const Home = ({ navigation }) => {
       style={{ flex: 1, width: "100%", height: "20%" }}
       source={{
         uri:
+          // is this comment really necessary? hhhhh
           // add url
           "https://labelllevie.files.wordpress.com/2014/07/travel.jpg?w=1090&h=726",
       }}

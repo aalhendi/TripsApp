@@ -25,6 +25,7 @@ const TripDetail = ({ navigation, route }) => {
 
   const handleDelete = () => {
     // TODO: Delete confirmation alert
+    // i think its deleted...
     tripStore.deleteTrip(trip.id);
   };
 
@@ -47,6 +48,9 @@ const TripDetail = ({ navigation, route }) => {
             <DetailTitle>{trip.title}</DetailTitle>
             <Text>{trip.description}</Text>
             <TouchableOpacity onPress={handleDelete}>
+              {/* whenever you have a condition like this where the else is empty, you can use && instead. like this:
+              {CONDITION && <FontAwesome ... />}
+             */}
               {authStore.user?.id === trip.userId ? (
                 <FontAwesome5 name="trash" size={29} color="red" />
               ) : (
