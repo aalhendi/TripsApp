@@ -20,8 +20,6 @@ import {
 } from "./styles";
 
 const Profile = ({ navigation, route }) => {
-  // TODO: APP CRASHES WHEN NEW USER REGISTERS WHEN EVALUATING PROFILE
-
   if (authStore.loading || profileStore.loading) {
     return <Spinner />;
   }

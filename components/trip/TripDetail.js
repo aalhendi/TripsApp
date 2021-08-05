@@ -31,14 +31,14 @@ const TripDetail = ({ navigation, route }) => {
               style={{
                 borderRadius: 50,
                 padding: 1,
-                height: 100,
-                width: 100,
+                height: 150,
+                width: 150,
                 alignSelf: "center",
               }}
               alt={"TripPicture"}
             />
             <DetailTitle>{trip.title}</DetailTitle>
-            <Text>{trip.description}</Text>
+            <Text style={{ fontSize: 18 }}>{trip.description}</Text>
             <DeleteBtn trip={trip} navigation={navigation} />
           </DetailWrapper>
         </ScrollView>

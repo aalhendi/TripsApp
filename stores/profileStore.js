@@ -33,7 +33,7 @@ class ProfileStore {
         formData
       );
       for (const key in profile) {
-        profile[key] = res.data[key];
+        runInAction(() => (profile[key] = res.data[key]));
       }
     } catch (error) {
       console.error(error);

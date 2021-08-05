@@ -27,7 +27,6 @@ const ProfileEdit = ({ navigation, route }) => {
   });
 
   const handleSubmit = async () => {
-    // TODO: Fix live rendering of updated profile
     await profileStore.updateProfile(profile);
     navigation.goBack();
   };

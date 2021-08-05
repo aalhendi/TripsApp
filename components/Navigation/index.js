@@ -62,7 +62,8 @@ const RootNavigator = ({ theme }) => {
         name="TripEdit"
         component={TripEdit}
         options={{
-          headerShown: false,
+          headerShown: true,
+          title: "Trip Edit",
         }}
       />
       <Stack.Screen

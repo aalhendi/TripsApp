@@ -29,9 +29,9 @@ const DeleteBtn = ({ navigation, trip }) => {
 
   return (
     <>
-      <TouchableOpacity onPress={handleDelete}>
+      <TouchableOpacity onPress={handleDelete} style={{ margin: 10 }}>
         {authStore.user?.id === trip.userId && (
-          <FontAwesome5 name="trash" size={29} color="red" />
+          <FontAwesome5 name="trash" size={28} color="red" />
         )}
       </TouchableOpacity>
     </>
