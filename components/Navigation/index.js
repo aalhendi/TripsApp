@@ -44,6 +44,7 @@ const RootNavigator = ({ theme }) => {
         component={TripExplore}
         options={{
           headerShown: true,
+          title: "Explore",
         }}
       />
 

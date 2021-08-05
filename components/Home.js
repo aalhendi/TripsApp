@@ -23,10 +23,7 @@ const Home = ({ navigation }) => {
     <HomeBackground
       style={{ flex: 1, width: "100%", height: "20%" }}
       source={{
-        uri:
-          // is this comment really necessary? hhhhh
-          // add url
-          "https://labelllevie.files.wordpress.com/2014/07/travel.jpg?w=1090&h=726",
+        uri: "https://labelllevie.files.wordpress.com/2014/07/travel.jpg?w=1090&h=726",
       }}
     >
       <OverLayContainer>
@@ -46,29 +43,30 @@ const Home = ({ navigation }) => {
             Click here
           </ButtonStyled>
 
-          <ButtonStyled onPress={() => navigation.navigate("Register")}>
-            Register
-          </ButtonStyled>
-
-          {/* if the user is not logged in why would he see the logout button? */}
-          <ButtonStyled
-            onPress={
-              authStore.user ? authStore.logout : () => alert("Not logged in!")
-            }
-          >
-            Logout
-          </ButtonStyled>
-
-          <ButtonStyled onPress={() => navigation.navigate("Login")}>
-            Log in
-          </ButtonStyled>
-
-          {/* TODO: Fix navigation permissions, only show profile if user logged in*/}
-          <ButtonStyled
-            onPress={() => navigation.navigate("Profile", { profile: profile })}
-          >
-            Profile
-          </ButtonStyled>
+          {authStore.user?.id ? (
+            <>
+              <ButtonStyled
+                onPress={
+                  authStore.user
+                    ? authStore.logout
+                    : () => alert("Not logged in!")
+                }
+              >
+                Logout
+              </ButtonStyled>
+              <ButtonStyled
+                onPress={() =>
+                  navigation.navigate("Profile", { profile: profile })
+                }
+              >
+                Profile
+              </ButtonStyled>
+            </>
+          ) : (
+            <ButtonStyled onPress={() => navigation.navigate("Login")}>
+              Log in / Register
+            </ButtonStyled>
+          )}
         </BottomStyling>
       </OverLayContainer>
     </HomeBackground>

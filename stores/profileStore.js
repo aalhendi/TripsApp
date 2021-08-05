@@ -1,5 +1,5 @@
 /* Import */
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import instance from "./instance";
 
 class ProfileStore {
@@ -12,8 +12,8 @@ class ProfileStore {
   fetchAll = async () => {
     try {
       res = await instance.get("/profiles");
-      this.profiles = res.data;
-      this.loading = false;
+      runInAction(() => (this.profiles = res.data));
+      runInAction(() => (this.loading = false));
     } catch (error) {
       console.log(error);
     }

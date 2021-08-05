@@ -1,12 +1,12 @@
 /* Imports */
 import React, { useState, useEffect } from "react";
-import { Button } from "native-base";
-import { TextInput, Text } from "react-native-paper";
+import { TextInput } from "react-native-paper";
 import * as ImagePicker from "expo-image-picker";
-import { View, Platform } from "react-native";
+import { Platform } from "react-native";
 
 /* State and Store */
 import tripStore from "../../stores/tripStore";
+import { observer } from "mobx-react-lite";
 
 /*Styles*/
 import {
@@ -29,8 +29,8 @@ const TripEdit = ({ navigation, route }) => {
     image: oldTrip.image,
   });
 
-  const handleSubmit = () => {
-    tripStore.updateTrip(trip);
+  const handleSubmit = async () => {
+    await tripStore.updateTrip(trip);
     navigation.goBack();
   };
 
@@ -102,4 +102,4 @@ const TripEdit = ({ navigation, route }) => {
   );
 };
 
-export default TripEdit;
+export default observer(TripEdit);

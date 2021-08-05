@@ -1,5 +1,5 @@
 /* Imports */
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import instance from "./instance";
 import decode from "jwt-decode";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -29,6 +29,11 @@ class AuthStore {
       this.setUser(res.data.token);
       return true;
     } catch (error) {
+      /* Handling unauthorized error code */
+      if (error.response.status === 401) {
+        console.log("Unauthorized");
+        return false;
+      }
       console.error(error);
       return false;
     }
@@ -37,13 +42,13 @@ class AuthStore {
   logout = async () => {
     delete instance.defaults.headers.common.Authorization;
     await AsyncStorage.removeItem("myToken");
-    this.user = null;
+    runInAction(() => (this.user = null));
   };
 
   setUser = async (token) => {
     await AsyncStorage.setItem("myToken", token);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-    this.user = decode(token);
+    runInAction(() => (this.user = decode(token)));
     profileStore.fetchAll();
     this.loading = false;
   };

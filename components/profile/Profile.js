@@ -29,30 +29,29 @@ const Profile = ({ navigation, route }) => {
 
   const { profile } = route.params;
 
-  let tripCount = 0;
+  let trips = [];
+
   if (tripStore.trips) {
-    tripCount = tripStore.trips.filter(
-      (trip) => trip.userId === profile.id
-    ).length;
+    trips = tripStore.trips.filter((trip) => trip.userId === profile.id);
   }
 
   // TODO: MOVE STYLES TO styles.js
   return (
     <>
       <ProfileWrapper>
-        <ScrollView>
-          <CountStyled> Trip count: {tripCount}</CountStyled>
+        <ScrollView style={{ width: "100%" }}>
+          <CountStyled> Trip count: {trips.length}</CountStyled>
           <ProfileImageStyled
             source={{ uri: profile.image }}
             alt={"ProfilePicture"}
           />
           <BioStyled>{profile.bio}</BioStyled>
-          <TripList inProfile={true} navigation={navigation} />
+          <TripList inProfile={true} navigation={navigation} trips={trips} />
         </ScrollView>
         <ProfileAdd
           color="white"
           small
-          icon="plus"
+          icon="account-edit-outline"
           onPress={() =>
             navigation.navigate("ProfileEdit", { profile: profile })
           }
