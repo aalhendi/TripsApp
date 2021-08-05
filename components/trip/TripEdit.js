@@ -8,7 +8,7 @@ import { View, Platform } from "react-native";
 /* State and Store */
 import tripStore from "../../stores/tripStore";
 
-/*styles*/
+/*Styles*/
 import {
   TripEditWrapper,
   TitleTextstyled,
@@ -18,8 +18,8 @@ import {
   TextStyled,
 } from "./styles";
 
-//TODO: keep defualt pic if not updated
 const TripEdit = ({ navigation, route }) => {
+  // TODO: Style this component
   const oldTrip = route.params.trip;
 
   const [trip, setTrip] = useState({
@@ -28,6 +28,7 @@ const TripEdit = ({ navigation, route }) => {
     description: oldTrip.description,
     image: oldTrip.image,
   });
+
   const handleSubmit = () => {
     tripStore.updateTrip(trip);
     navigation.goBack();
@@ -88,7 +89,7 @@ const TripEdit = ({ navigation, route }) => {
           label="description"
           autoCapitalize="sentences"
           onChangeText={(description) => setTrip({ ...trip, description })}
-          placeholder="Tell me more!!"
+          placeholder="Describe it!"
         />
         <AddImageButton onPress={pickImage}>
           <TextStyled>Add Image</TextStyled>

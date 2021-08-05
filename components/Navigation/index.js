@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 /* Components */
 import Home from "../Home";
-import TripList from "../trip/TripList";
+import TripExplore from "../trip/TripExplore";
 import Login from "../authentication/Login";
 import Register from "../authentication/Register";
 import TripDetail from "../trip/TripDetail";
@@ -40,8 +40,8 @@ const RootNavigator = ({ theme }) => {
       />
 
       <Stack.Screen
-        name="TripList"
-        component={TripList}
+        name="TripExplore"
+        component={TripExplore}
         options={{
           headerShown: true,
         }}

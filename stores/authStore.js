@@ -16,8 +16,10 @@ class AuthStore {
     try {
       const res = await instance.post("/register", newUser);
       this.setUser(res.data.token);
+      return true;
     } catch (error) {
       console.error(error);
+      return false;
     }
   };
 
@@ -25,8 +27,10 @@ class AuthStore {
     try {
       const res = await instance.post("/login", userData);
       this.setUser(res.data.token);
+      return true;
     } catch (error) {
       console.error(error);
+      return false;
     }
   };
 
@@ -55,6 +59,7 @@ class AuthStore {
         this.logout();
       }
     }
+    this.loading = false;
   };
 }
 

@@ -1,7 +1,8 @@
 /* Imports */
 import React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
-/* styles */
+
+/* Styles */
 import {
   TripTitleStyled,
   ItemWrapper,
@@ -12,6 +13,12 @@ import {
   ProfileImage,
   DeleteOpacityStyled,
 } from "./styles";
+
+/* Components */
+import { Text, TouchableOpacity, View } from "react-native";
+import { Image } from "react-native";
+import { ShopItemStyled } from "./styles";
+
 /* State and Store */
 import tripStore from "../../stores/tripStore";
 import authStore from "../../stores/authStore";
@@ -45,10 +52,8 @@ const TripItem = ({ trip, navigation }) => {
         </ItemTouchableOpacity>
 
         <DeleteOpacityStyled onPress={() => tripStore.deleteTrip(trip.id)}>
-          {authStore.user?.id === trip.userId ? (
+          {authStore.user?.id === trip.userId && (
             <FontAwesome5 name="trash" size={20} color="red" />
-          ) : (
-            <></>
           )}
         </DeleteOpacityStyled>
       </ItemWrapper>

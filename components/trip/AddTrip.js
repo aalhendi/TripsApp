@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback, useContext } from "react";
-// import ImagePicker from "react-native-image-picker";
-//TODO:Image
-//components
-import tripStore from "../../stores/tripStore";
-import { observer } from "mobx-react-lite";
+/* Imports */
+import React, { useState, useEffect } from "react";
+import { Platform } from "react-native";
+import * as ImagePicker from "expo-image-picker";
+
+/* Styles */
 import {
   Container,
   AddTripTitle,
@@ -13,9 +13,9 @@ import {
   AddImageButton,
   SubmitButton,
 } from "./styles";
-//
-import { Platform } from "react-native";
-import * as ImagePicker from "expo-image-picker";
+
+/* State and Store */
+import tripStore from "../../stores/tripStore";
 
 const AddTrip = ({ navigation }) => {
   const [newTrip, setNewTrip] = useState({
@@ -64,7 +64,7 @@ const AddTrip = ({ navigation }) => {
 
   const handleSubmit = async () => {
     await tripStore.createTrip(newTrip);
-    navigation.replace("TripList");
+    navigation.goBack();
   };
 
   return (

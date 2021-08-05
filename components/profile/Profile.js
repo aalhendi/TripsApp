@@ -1,14 +1,17 @@
 /* Imports */
 import React from "react";
-import { Spinner } from "native-base";
-import { ScrollView } from "react-native";
+import { View, Heading, Spinner, Image } from "native-base";
+import { ScrollView, StyleSheet } from "react-native";
+import { FAB } from "react-native-paper";
+/* Components */
+import TripList from "../trip/TripList";
 /* State and Store */
 import { observer } from "mobx-react-lite";
 import profileStore from "../../stores/profileStore";
 import authStore from "../../stores/authStore";
 import tripStore from "../../stores/tripStore";
 
-/*styles*/
+/*Styles*/
 import {
   ProfileWrapper,
   CountStyled,
@@ -38,12 +41,13 @@ const Profile = ({ navigation, route }) => {
     <>
       <ProfileWrapper>
         <ScrollView>
-          <CountStyled>{"Trip count: " + tripCount}</CountStyled>
+          <CountStyled> Trip count: {tripCount}</CountStyled>
           <ProfileImageStyled
             source={{ uri: profile.image }}
             alt={"ProfilePicture"}
           />
           <BioStyled>{profile.bio}</BioStyled>
+          <TripList inProfile={true} navigation={navigation} />
         </ScrollView>
         <ProfileAdd
           color="white"
